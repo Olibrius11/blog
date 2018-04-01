@@ -3,7 +3,8 @@
     "description": "OPCR P5 DA_PHP/Symfony",
     "type": "project",
     "require": {
-        "twig/twig": "^2.4"
+        "twig/twig": "^2.4",
+        "symfony/yaml": "^4.0"
     },
     "require-dev": {
         "phpmetrics/phpmetrics": "^2.3",
