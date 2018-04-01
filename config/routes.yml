@@ -1,0 +1,4 @@
+home:
+  path: "blog/"
+  callback: 'Blog\Controller\HomePageController#index'
+  params: ""
