@@ -16,7 +16,7 @@ class Response
     private $status;
     private $content;
 
-    public function __construct(int $status=200, $content="")
+    public function __construct(int $status = 200, $content = "")
     {
         $this->status = $status;
         $this->content = $content;

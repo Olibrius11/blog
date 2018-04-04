@@ -20,7 +20,7 @@ class Request
     private $params;
 
     /**Prepare a request for matching against routes */
-    public function __construct($uri="", $params=[])
+    public function __construct($uri = "", $params = [])
     {
         $this->uri = $uri;
         $this->params = $params;

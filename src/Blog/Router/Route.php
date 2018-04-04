@@ -17,7 +17,7 @@ class Route
      * @param string        $callback function name
      * @param array         $params to pass to the callback function
      */
-    public function __construct($path, $callback, $params=[])
+    public function __construct($path, $callback, $params = [])
     {
         $this->path = $this->normalize($path);
         $this->callback = $callback;
