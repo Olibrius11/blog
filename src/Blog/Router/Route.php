@@ -22,12 +22,12 @@ class Route
         $this->path = $this->normalize($path);
         $this->callback = $callback;
         $this->params = $params;
-    }    
-    /** 
-     * Removes query string from uri and return an array without empty values 
-     * 
+    }
+    /**
+     * Removes query string from uri and return an array without empty values
+     *
      * @param string    $uri to be normalized
-     * @return array    $route normalized       
+     * @return array    $route normalized
      * */
     private function normalize($uri)
     {
@@ -40,41 +40,41 @@ class Route
     }
 
     /**
-     * Handles the matching process 
+     * Handles the matching process
      * @param Request     $request to match agains
      */
     public function match(Request $request)
-    {        
-        return $this->matchesPath ($request->getUri()) 
-                && $this->matchesParams ($request->getParams());
+    {
+        return $this->matchesPath($request->getUri())
+                && $this->matchesParams($request->getParams());
     }
 
-    /** 
+    /**
      * Matches request path against url path
-     * 
+     *
      * @param string        $rPath of the request
-     * @return boolean       
+     * @return boolean
      */
     private function matchesPath($rPath)
     {
         $comparePath = $this->normalize($rPath);
         return empty(
             array_diff(
-                $comparePath, 
+                $comparePath,
                 $this->path
                 )
             );
     }
 
-    /** 
+    /**
      * Matches request params against route's required  params.
      * Initializes routes params if matched.
-     * 
+     *
      * @param string        $rParams of the request
-     * @return boolean       
+     * @return boolean
      */
     private function matchesParams($rParams)
-    {        
+    {
         //merges the result of array_diff_keys to obtain uniques keys that exist only in either array but not in both
         $unique = array_merge(
             array_diff_key($rParams, $this->params),
@@ -82,12 +82,11 @@ class Route
         );
         $compareParams = empty($unique);
 
-            if ($compareParams)
-            {
-                $this->params = $rParams;
-            }
+        if ($compareParams) {
+            $this->params = $rParams;
+        }
 
-            return $compareParams;
+        return $compareParams;
     }
 
     /**
@@ -100,12 +99,12 @@ class Route
 
         $controller = new $callback[0]();
 
-        return call_user_func_array(array ($controller, $callback[1]), $this->params);
+        return call_user_func_array(array($controller, $callback[1]), $this->params);
     }
 
     /**
      * Get the value of path
-     */ 
+     */
     public function getPath()
     {
         return $this->path;

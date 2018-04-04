@@ -3,7 +3,7 @@ namespace Blog\Test;
 
 class TestController
 {
-    public function received ()
+    public function received()
     {
         return "received";
     }
@@ -17,6 +17,4 @@ class TestController
     {
         return "You love $quantity piece(s) of $color $food";
     }
-
-
 }

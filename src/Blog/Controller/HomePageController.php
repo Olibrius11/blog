@@ -11,12 +11,10 @@
 
 namespace Blog\Controller;
 
-
 class HomePageController
 {
     public function index()
     {
         return file_get_contents("./templates/home.html");
     }
-
 }

@@ -12,7 +12,7 @@
 
 namespace Blog\Router;
 
-class Request 
+class Request
 {
     /** uri requested */
     private $uri;
@@ -20,7 +20,7 @@ class Request
     private $params;
 
     /**Prepare a request for matching against routes */
-    public function __construct ($uri="", $params=[])
+    public function __construct($uri="", $params=[])
     {
         $this->uri = $uri;
         $this->params = $params;
@@ -28,7 +28,7 @@ class Request
     
     /**
      * Get the value of params
-     */ 
+     */
     public function getParams()
     {
         return $this->params;
@@ -36,7 +36,7 @@ class Request
 
     /**
      * Get the value of uri
-     */ 
+     */
     public function getUri()
     {
         return $this->uri;
@@ -46,7 +46,7 @@ class Request
      * Set the value of params
      *
      * @return  self
-     */ 
+     */
     public function setParams($params)
     {
         $this->params = $params;

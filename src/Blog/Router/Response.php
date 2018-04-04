@@ -11,12 +11,12 @@
 
 namespace Blog\Router;
 
-class Response 
+class Response
 {
     private $status;
     private $content;
 
-    public function __construct (int $status=200, $content="")
+    public function __construct(int $status=200, $content="")
     {
         $this->status = $status;
         $this->content = $content;
@@ -24,9 +24,9 @@ class Response
 
     /**
      * Sends response to browser
-     * 
+     *
      * @param int       $code for http response
-     */ 
+     */
 
     public function send()
     {
@@ -36,7 +36,7 @@ class Response
 
     /**
      * Get the value of status
-     */ 
+     */
     public function getStatus()
     {
         return $this->status;
@@ -46,7 +46,7 @@ class Response
      * Set the value of status
      *
      * @return  self
-     */ 
+     */
     public function setStatus($status)
     {
         $this->status = $status;
@@ -56,7 +56,7 @@ class Response
 
     /**
      * Get the value of content
-     */ 
+     */
     public function getContent()
     {
         return $this->content;
@@ -66,7 +66,7 @@ class Response
      * Set the value of content
      *
      * @return  self
-     */ 
+     */
     public function setContent($content)
     {
         $this->content = $content;
