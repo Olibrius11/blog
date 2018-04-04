@@ -8,7 +8,7 @@ use Blog\Router\Request;
 use Blog\Router\Response;
 use Blog\Router\Route;
 
-$request = new Request();
+$request = new Request($_SERVER['REQUEST_URI'], $_REQUEST);
 $router = new Router();
 
 $router->import(__DIR__. "/config/routes.yml");

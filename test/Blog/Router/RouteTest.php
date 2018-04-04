@@ -35,9 +35,9 @@ final class RouteTest extends TestCase
 
     public function testMatchesRoutesWithGetParams()
     {
-        $request = new Request("/blog/admin/stuff?id=123&title=dummy");
+        $request = new Request("/blog/admin/stuff?id=123&title=dummy", array("id"=>"123", "title"=>"dummy"));
 
-        $route = new Route("/blog/admin/stuff", "dummy");
+        $route = new Route("/blog/admin/stuff", "dummy", array("id"=>"", "title"=>""));
 
         $this->assertTrue($route->match($request));
     }

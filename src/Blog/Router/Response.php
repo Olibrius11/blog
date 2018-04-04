@@ -28,10 +28,10 @@ class Response
      * @param int       $code for http response
      */ 
 
-    public function send($code=200)
+    public function send()
     {
         http_response_code($this->status);
-        echo $this->content;
+        echo $this->content ;
     }
 
     /**

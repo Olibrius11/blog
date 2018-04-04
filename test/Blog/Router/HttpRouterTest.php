@@ -29,7 +29,7 @@ final class HttpRouterTest extends TestCase
 
         $request = new Request ("blog/admin");
 
-        $this->assertEquals($router->resolve($request), "received");
+        $this->assertEquals($router->resolve($request)->getContent(), "received");
 
     }
 
@@ -42,7 +42,7 @@ final class HttpRouterTest extends TestCase
 
         $request = new Request ("blog/admin/food");
         $request->setParams(array("food"=>"banana"));
-        $this->assertEquals($router->resolve($request), "banana");
+        $this->assertEquals($router->resolve($request)->getContent(), "banana");
 
     }
 
@@ -59,11 +59,11 @@ final class HttpRouterTest extends TestCase
             "color"=> "yellow",
             "quantity" => "enormous"
         ));
-        $this->assertEquals($router->resolve($request), "You love enormous piece(s) of yellow banana");
+        $this->assertEquals($router->resolve($request)->getContent(), "You love enormous piece(s) of yellow banana");
         
     }
 
-    public function testFailsOnRouteWithoutRequiredParams()
+    public function test404OnRouteWithoutRequiredParams()
     {
         require_once( __DIR__ . "/Fixtures/TestController.php");
 
@@ -74,8 +74,7 @@ final class HttpRouterTest extends TestCase
         $request->setParams(array(
             "willfail"=>"there"
         ));
-        $this->expectException(\Exception::class);
-        $router->resolve($request);
+        $this->assertEquals($router->resolve($request)->getStatus(), 404);
     }
        
 

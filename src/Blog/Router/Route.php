@@ -9,7 +9,7 @@ class Route
     /** @var string function to call*/
     private $callback;
     /** @var array request parameters */
-    private $params=[];
+    private $params;
 
     /**
      * Constructor
@@ -17,13 +17,11 @@ class Route
      * @param string        $callback function name
      * @param array         $params to pass to the callback function
      */
-    public function __construct($path, $callback, $params="")
+    public function __construct($path, $callback, $params=[])
     {
         $this->path = $this->normalize($path);
         $this->callback = $callback;
-        if (!empty($params)) {
-            $this->params = $params;
-        }
+        $this->params = $params;
     }    
     /** 
      * Removes query string from uri and return an array without empty values 
@@ -77,12 +75,12 @@ class Route
      */
     private function matchesParams($rParams)
     {        
-        $compareParams = empty(
-            array_diff_key(
-                $rParams, 
-                $this->params
-                )
-            );
+        //merges the result of array_diff_keys to obtain uniques keys that exist only in either array but not in both
+        $unique = array_merge(
+            array_diff_key($rParams, $this->params),
+            array_diff_key($this->params, $rParams)
+        );
+        $compareParams = empty($unique);
 
             if ($compareParams)
             {

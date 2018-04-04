@@ -11,8 +11,6 @@ class HttpRouter
 {
     /**@var array An array representing routes and their associated controllers */
     private $routes;
-    /**@var Request represents the request to route*/
-    private $request;
  
     /**
      * Imports routes from a config file.
@@ -29,12 +27,15 @@ class HttpRouter
             {
                 if(!isset($route["params"]) || empty($route["params"])) {
                     $this->addRoute(new Route($route["path"], $route['callback'], [])); 
+                    continue;
                 }
-                elseif (is_array($route["params"])) {
-                    $this->addRoute (new Route($route["path"], $route['callback'], array_fill_keys($route["params"], ""))); 
-                } else {
+                
+                if (is_array($route["params"])) {
+                    $this->addRoute (new Route($route["path"], $route['callback'], array_fill_keys($route["params"], "")));
+                    continue;
+                }
                     $this->addRoute (new Route($route["path"], $route['callback'], [$route["params"]=>""])); 
-                }                
+              
             };
         } catch (ParseException $e) {
             sprintf("Error parsing file %s near : \n %s", $e->getParsedFile(), $e->getSnippet());
@@ -61,6 +62,7 @@ class HttpRouter
 
      /**
       * Adds a route to Router
+      * @param Route    $route
       */
      public function addRoute (Route $route)
      {

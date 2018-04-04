@@ -20,14 +20,10 @@ class Request
     private $params;
 
     /**Prepare a request for matching against routes */
-    public function __construct ($uri="")
+    public function __construct ($uri="", $params=[])
     {
-        if (empty($uri)) {
-            $this->uri = $_SERVER['REQUEST_URI'];
-        } else {
-            $this->uri = $uri;
-        }
-        $this->params = $_REQUEST;
+        $this->uri = $uri;
+        $this->params = $params;
     }
     
     /**
