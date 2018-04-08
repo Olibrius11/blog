@@ -1,0 +1,17 @@
+testroute:
+  path: "/blog/admin"
+  callback: 'Blog\Test\TestController#received'
+  params: ""
+testroute2:
+  path: "blog/admin/food"
+  callback: 'Blog\Test\TestController#favouriteFood'
+  params: "food"
+testroute3:
+  path: "blog/food/details"
+  callback: 'Blog\Test\TestController#favouriteFoods'
+  params:
+    - "food"
+    - "color"
+    - "quantity"
+
+  
