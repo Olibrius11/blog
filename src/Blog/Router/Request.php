@@ -14,25 +14,25 @@ namespace Blog\Router;
 
 class Request
 {
-    /** uri requested */
+    /** @var string uri requested */
     private $uri;
-    /** request params  */
+    /** @var array request params  */
     private $params;
 
-    /**Prepare a request for matching against routes */
+    /**
+     * Constructor
+     * Prepare a request for matching against routes 
+     * 
+     * @param string    $uri of the request
+     * @param array     $params of the request
+     * 
+     * */
     public function __construct($uri = "", $params = [])
     {
         $this->uri = $uri;
         $this->params = $params;
     }
-    
-    /**
-     * Get the value of params
-     */
-    public function getParams()
-    {
-        return $this->params;
-    }
+
 
     /**
      * Get the value of uri
@@ -41,7 +41,14 @@ class Request
     {
         return $this->uri;
     }
-
+    /**
+     * Get the value of params
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+    
     /**
      * Set the value of params
      *
